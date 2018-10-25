@@ -77,7 +77,8 @@ main() {
     local master
     master="$(< "${CONF_DIR}/master.scss")"
     [[ ! -z "$backend" ]] && {
-        master="${master/"backend.scss"/"backends/${backend}.scss"}"
+        master="${master/backend.scss/backends\/${backend}.scss}"
+        head <<< $master
     }
     
     local result
